@@ -1,0 +1,76 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Book</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="wrapper">
+
+  <h1 class="main-heading">Contact Book</h1>
+
+  <!-- top row: count on left, search + sort on right -->
+  <div class="top-row">
+    <span class="count-label" id="countLabel">10 Contacts</span>
+    <div class="top-right">
+      <input type="text" id="searchBox" placeholder="Search contacts..." oninput="renderAll()" />
+      <button class="sort-btn active" id="btnAZ" onclick="setSort('asc')">A–Z</button>
+      <button class="sort-btn" id="btnZA" onclick="setSort('desc')">Z–A</button>
+      <button class="toggle-btn" onclick="toggleSort()">&#8645;</button>
+    </div>
+  </div>
+
+  <!-- main layout: sidebar + content -->
+  <div class="main-layout">
+
+    <!-- sidebar -->
+    <div class="sidebar">
+      <button class="add-contact-btn" onclick="openModal()">+ Add Contact</button>
+      <p class="contacts-heading">&#128101; Contacts</p>
+      <hr />
+      <div id="sidebarList"></div>
+    </div>
+
+    <!-- right side contact list -->
+    <div class="content-area">
+      <div id="contactList"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- add / edit popup -->
+<div class="modal-bg" id="modalBg">
+  <div class="modal">
+
+    <h3 id="modalHeading">Add Contact</h3>
+
+    <label>Full Name *</label>
+    <input type="text" id="inputName" placeholder="Enter name" />
+    <span class="err" id="errName"></span>
+
+    <label>Mobile *</label>
+    <input type="text" id="inputMobile" placeholder="Enter mobile number" />
+    <span class="err" id="errMobile"></span>
+
+    <label>Email (optional)</label>
+    <input type="email" id="inputEmail" placeholder="Enter email" />
+    <span class="err" id="errEmail"></span>
+
+    <div class="modal-footer">
+      <button class="save-btn" id="saveBtn" onclick="saveContact()">Add Contact</button>
+      <button class="cancel-btn" onclick="closeModal()">Cancel</button>
+    </div>
+
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
